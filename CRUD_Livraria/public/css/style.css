@@ -1,0 +1,37 @@
+.th-actions {
+    width: 80px;
+    text-align: center;
+}
+
+.actions {
+    padding: 5px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1em;
+    margin: 0px 2px;
+}
+
+.actions:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.edit {
+    background: rgb(51, 122, 183);;
+}
+
+.edit:hover {
+   background-color: #265a88;
+}
+
+.view {
+    background: rgb(91, 192, 222);
+}
+
+.view:hover {
+    background-color: #2aabd2;
+}
+
+.btn-add {
+    margin-bottom: 10px;
+}
