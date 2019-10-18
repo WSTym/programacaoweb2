@@ -22,12 +22,14 @@
             <td>{{$book->image}}</td>
             <td>{{$book->description}}</td>
             <td class="th-actions">
-                <a href="{{route('books.edit', $book->id)}}" class="edit actions"><span class="glyphicon glyphicon-pencil"></span></a>
-                <a href="" class="view actions"><span class="glyphicon glyphicon-eye-open"></span></a>
+                <a href="{{route('books.edit', $book->id)}}" class="edit actions"><span class="glyphicon glyphicon-edit"></span></a>
+                <a href="{{route('books.show', $book->id)}}" class="view actions"><span class="glyphicon glyphicon-eye-open"></span></a>
             </td>
         </tr>
         @endforeach 
         
     </table>
+
+    {!! $books -> links() !!}
 
 @endsection

@@ -23,7 +23,7 @@ class BookController extends Controller
     {
         //$title - "Index";
 
-        $books = $this->book->all();
+        $books = $this->book->paginate('10');
 
         return view('index', compact('books'));
     }
@@ -66,7 +66,9 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        //
+        $book = $this->book->find($id);
+
+        return view('show', compact('book'));
     }
 
     /**
@@ -91,9 +93,19 @@ class BookController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $book = $request->all();
+        $dataForm = $request->all();
+
+        $this->validate($request, $this->book->rules);
         
-        dd($book);
+        $book = $this->book->find($id);
+
+        $update = $book->update($dataForm);
+
+        if($update)
+            return redirect()->route('books.index');
+        else
+            return redirect()->route('books.edit', $id)->with(['errors' => 'Falha ao editar!']);
+
     }
 
     /**
@@ -104,6 +116,14 @@ class BookController extends Controller
      */
     public function destroy($id)
     {
-        return "teste";
+        $book = $this->book->find($id);
+
+        $delete = $book->delete();
+
+        if($delete)
+            return redirect()->route('books.index');
+        else
+            return redirect()->route('books.show', $id)->with(['errors' => 'Falha ao deletar!']);
+
     }
 }
