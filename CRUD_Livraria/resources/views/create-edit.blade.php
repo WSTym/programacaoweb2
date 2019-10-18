@@ -19,10 +19,10 @@
     @endif
 
     @if (isset($book))
-    <form method="POST" action="{{ route('books.update', $book->id) }}" class="form">
+    <form method="POST" action="{{ route('books.update', $book->id) }}" class="form" enctype="multipart/form-data">
             {!! method_field('PUT') !!}
     @else
-    <form method="POST" action="{{ route('books.store') }}" class="form">
+    <form method="POST" action="{{ route('books.store') }}" class="form" enctype="multipart/form-data">
     @endif
 
             {!! csrf_field() !!}
@@ -36,7 +36,7 @@
             </div>
 
             <div class="form-group">
-                <input type="file" name="image" id="" class="form-control">
+                <input type="file" name="image" class="form-control">
             </div>
             
             <div class="form-group">    

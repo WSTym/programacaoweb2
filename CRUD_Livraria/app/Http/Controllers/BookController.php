@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Book;
+use DateTime;
 
 class BookController extends Controller
 {
@@ -49,6 +50,20 @@ class BookController extends Controller
         $dataForm = $request->all();
 
         $this->validate($request, $this->book->rules);
+
+        if ($request->hasFile('image') && $request->file('image')->isValid())
+        {
+            $name = date('YmdHis');
+            $extension = $request->image->extension();
+            $nameFile = "{$name}.{$extension}";
+
+            $dataForm['image'] = $nameFile;
+
+            $upload = $request->image->storeAs('img', $nameFile);
+
+            if (!$upload)
+                return redirect()->back()->with('error', 'Falha ao fazer upload')->withInput();
+        }
 
         $insert = $this->book->create($dataForm);
 
@@ -98,6 +113,20 @@ class BookController extends Controller
         $this->validate($request, $this->book->rules);
         
         $book = $this->book->find($id);
+
+        if ($request->hasFile('image') && $request->file('image')->isValid())
+        {
+            $name = date('YmdHis');
+            $extension = $request->image->extension();
+            $nameFile = "{$name}.{$extension}";
+
+            $dataForm['image'] = $nameFile;
+
+            $upload = $request->image->storeAs('img', $nameFile);
+
+            if (!$upload)
+                return redirect()->back()->with('error', 'Falha ao fazer upload')->withInput();
+        }
 
         $update = $book->update($dataForm);
 
