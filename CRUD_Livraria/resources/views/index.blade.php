@@ -1,4 +1,8 @@
 @extends('adminlte::page')
+    <link rel="stylesheet" href="{{ url('css/datatables.min.css') }}">
+@section('css')
+    
+@endsection
 
 @section('content')
 
@@ -11,7 +15,7 @@
         </div>
 
         <div class="form-group">    
-            <table class="table table-bordered table-striped">
+            <table class="table table-bordered table-striped" id="tb-book">
                 <tr>
                     <th>Nome</th>
                     <th>Autor</th>
@@ -41,4 +45,15 @@
 
     </div>
 
+
+
+@endsection
+
+@section('js')
+    <script src="{{ url('js/datatables.min.js') }}"></script>
+    <script>
+        $(document).ready(function(){
+            $('#tb-book').DataTable();
+        })
+    </script>
 @endsection
