@@ -1,4 +1,4 @@
-@extends('template')
+@extends('adminlte::page')
 
 @section('content')
 
@@ -7,8 +7,6 @@
     @else
     <h1>Cadastro de livro</h1>
     @endif 
-
-        <a href="{{route('books.index')}}" class="btn btn-primary btn-add"><span class="glyphicon glyphicon-chevron-left"></span>  Voltar</a>
 
     @if (isset($errors) && count($errors) > 0)
     <div class="alert alert-danger">
@@ -42,6 +40,8 @@
             <div class="form-group">    
                 <textarea name="description" placeholder="Descrição" id="" cols="30" rows="10" class="form-control">{{$book->description or old('description') }}</textarea>
             </div> 
+
+            <a href="{{route('books.index')}}" class="btn btn-primary btn-add"><span class="glyphicon glyphicon-chevron-left"></span>  Voltar</a>
 
             <button class="btn btn-success"><span class="glyphicon glyphicon-ok"></span>{{isset($book) ? " Atualizar" : " Cadastrar"}}</button>
         </form>

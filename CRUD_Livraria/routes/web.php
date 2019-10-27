@@ -20,3 +20,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'BookController@index');
 
 Route::resource('/books', 'BookController');
+
+
+
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
