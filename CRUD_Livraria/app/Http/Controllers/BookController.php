@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Book;
 use DateTime;
 
@@ -150,9 +151,14 @@ class BookController extends Controller
         $delete = $book->delete();
 
         if($delete)
+        {   
+            Storage::delete("img/$book->image");            
             return redirect()->route('books.index');
+        } 
         else
-            return redirect()->route('books.show', $id)->with(['errors' => 'Falha ao deletar!']);
+        {
+            return redirect()->route('books.show', $id)->with('error', 'Falha ao deletar livro!');
+        }
 
     }
 }
