@@ -1,7 +1,9 @@
 @extends('adminlte::page')
+   
+@section('css') 
+
     <link rel="stylesheet" href="{{ url('css/datatables.min.css') }}">
-@section('css')
-    
+
 @endsection
 
 @section('content')
@@ -15,29 +17,35 @@
         </div>
 
         <div class="form-group">    
-            <table class="table table-bordered table-striped" id="tb-book">
-                <tr>
-                    <th>Nome</th>
-                    <th>Autor</th>
-                    <th>Descrição</th> 
-                    <th class="text-center">Ações</th>
-                </tr>
+            <table class="display" id="tbl-book">
 
-                @foreach ($books as $book)
-                <tr>
-                    <td>{{ $book->name }}</td>
-                    <td>{{ $book->author }}</td>
-                    <td>{{ $book->description }}</td> 
-                    <td class="text-center">
-                        <a href="{{ route('books.edit', $book->id) }}">
-                            <span class="glyphicon glyphicon-edit" style="margin-right:.5rem"></span>
-                        </a> 
-                        <a href="{{ route('books.show', $book->id) }}">
-                            <span class="glyphicon glyphicon-eye-open"></span>
-                        </a> 
-                    </td>
-                </tr>
-                @endforeach                
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Autor</th>
+                        <th>Descrição</th> 
+                        <th class="text-center">Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach ($books as $book)
+                    <tr>
+                        <td>{{ $book->name }}</td>
+                        <td>{{ $book->author }}</td>
+                        <td>{{ $book->description }}</td> 
+                        <td class="text-center">
+                            <a href="{{ route('books.edit', $book->id) }}">
+                                <span class="glyphicon glyphicon-edit" style="margin-right:.5rem"></span>
+                            </a> 
+                            <a href="{{ route('books.show', $book->id) }}">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                            </a> 
+                        </td>
+                    </tr>
+                    @endforeach 
+                </tbody>
+                
             </table>
         </div>
 
@@ -49,11 +57,8 @@
 
 @endsection
 
-@section('js')
-    <script src="{{ url('js/datatables.min.js') }}"></script>
-    <script>
-        $(document).ready(function(){
-            $('#tb-book').DataTable();
-        })
-    </script>
+@section('js') 
+
+    <script src="{{ url('js/datatables.js') }}"></script>
+    
 @endsection

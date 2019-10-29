@@ -11,6 +11,7 @@ class Book extends Model
     public $rules = [
         'name'          => 'required|min:3|max:100',
         'author'        => 'required|min:3|max:100',
+        'image'         => 'required',
         'description'   => 'required|min:3|max:1000',
     ];
 }
