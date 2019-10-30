@@ -14,3 +14,5 @@
 Route::get('/', function () {
     return '<h1>Minha primeira rota com Laravel</h1>';
 });
+
+Route::get('/Contato', 'Contato\ContatoController@lista');
