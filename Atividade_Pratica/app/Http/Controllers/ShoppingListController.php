@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ShoppinListController extends Controller
+class ShoppingListController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,14 @@ class ShoppinListController extends Controller
      */
     public function index()
     {
-        //
+
+        $list = [
+        'product' => ['arroz', 'feijão', 'açucar'],
+        'amount'  => [5, 10, 10],
+        'type'    => ['Kg', 'Kg', 'Kg'],
+        ];
+
+        return view('panel.index', compact('list'));
     }
 
     /**
@@ -23,7 +30,7 @@ class ShoppinListController extends Controller
      */
     public function create()
     {
-        //
+        return view('create-edit.index');
     }
 
     /**
@@ -56,7 +63,7 @@ class ShoppinListController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('create-edit.index');
     }
 
     /**

@@ -11,8 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return '<h1>Minha primeira rota com Laravel</h1>';
-});
+$this->get('/', 'ShoppingListController@index');
 
-Route::get('/Contato', 'Contato\ContatoController@lista');
+$this->resource('shopping-lists', 'ShoppingListController');
